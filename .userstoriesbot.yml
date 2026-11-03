@@ -1,0 +1,12 @@
+# Showcase fork only (never part of an upstream pull request).
+version: 1
+app:
+  install: "npm i --no-save --no-audit --no-fund --prefix demo-vendor jquery@1.12.4 && sed -i 's#https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js#/demo-vendor/node_modules/jquery/dist/jquery.min.js#' es6/index.html"
+  start: python3 -m http.server {port} --bind 0.0.0.0
+  url: http://localhost:{port}
+  readyPath: /es6/
+  readyStatus: 200
+  runtime: node22
+demo:
+  maxVideos: 1
+  beforePass: true
